@@ -1,37 +1,34 @@
 ### Получить задачи на сегодня
-GET http://localhost:8085/tasks/filtered?interval=today&completed=true
+GET http://localhost:8085/api/v1/tasks/filtered?interval=today&completed=true
+
 
 ### Получить задачи на неделю
-GET http://localhost:8085/tasks/filtered?interval=week&completed=true
+GET http://localhost:8085/api/v1/tasks/filtered?interval=week&completed=true
 
 ### Получить задачи на месяц
-GET http://localhost:8085/tasks/filtered?interval=month&completed=true
+GET http://localhost:8085/api/v1/tasks/filtered?interval=month&completed=true
 
 ### Создать задачу
-POST http://localhost:8085/tasks
+POST http://localhost:8085/api/v1/tasks
 Content-Type: application/json
 
 {
   "title": "Новая задача",
-  "description": "Описание новой задачи",
-  "date": "2023-10-11",
-  "isCompleted": false
+  "description": "Описание новой задачи"
 }
 
 ### Изменить задачу по идентификатору
-PUT http://localhost:8085/tasks/1
+PATCH http://localhost:8085/api/v1/tasks/1
 Content-Type: application/json
 
 {
-  "id": 1,
   "title": "Измененная задача",
-  "description": "Описание измененной задачи",
-  "date": "2023-10-11",
-  "isCompleted": true
+  "description": "Описание измененной задачи"
 }
 
 ### Установить/снять метку выполнения задачи
-PUT http://localhost:8085/tasks/1/toggle-completion
+POST http://localhost:8085/api/v1/tasks/1/toggle-completion
+
 
 ### Удалить задачу по идентификатору
-DELETE http://localhost:8085/tasks/1
+DELETE http://localhost:8085/api/v1/tasks/1

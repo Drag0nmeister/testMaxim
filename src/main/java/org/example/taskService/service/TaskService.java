@@ -1,23 +1,31 @@
 package org.example.taskService.service;
 
-import org.example.taskService.model.Task;
+import org.example.taskService.dto.TaskCreationRequest;
+import org.example.taskService.dto.TaskUpdateRequest;
+import org.example.taskService.dto.TaskResponse;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface TaskService {
-    Task createTask(Task task);
+    TaskResponse createTask(TaskCreationRequest taskRequest);
 
-    Task updateTask(Task task);
+    TaskResponse updateTask(Long taskId, TaskUpdateRequest taskUpdate);
 
     void toggleTaskCompletion(Long id);
 
-
     void deleteTask(Long id);
 
-    List<Task> getTasksByDateAndCompletionStatus(LocalDate date, boolean completed);
+    List<TaskResponse> getTasksByDateRangeAndCompletionStatus(LocalDateTime start, LocalDateTime end, boolean completed);
 
-    List<Task> getTasksByWeekAndCompletionStatus(boolean completed);
+    List<TaskResponse> getTasksByDateAndCompletionStatus(LocalDateTime date, boolean completed);
 
-    List<Task> getTasksByMonthAndCompletionStatus(boolean completed);
+    List<TaskResponse> getTasksByWeekAndCompletionStatus(boolean completed);
+
+    List<TaskResponse> getTasksByMonthAndCompletionStatus(boolean completed);
+
+    List<TaskResponse> getUpcomingTasksByWeekAndCompletionStatus(boolean completed);
+
+    List<TaskResponse> getUpcomingTasksByMonthAndCompletionStatus(boolean completed);
 }
