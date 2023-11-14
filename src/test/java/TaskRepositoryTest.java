@@ -32,7 +32,7 @@ class TaskRepositoryTest {
     }
 
     @Test
-    public void whenFindByDateAndCompleted_thenFindTask() {
+    public void whenFindByDateAndCompleted() {
         List<Task> foundTasks = taskRepository.findByDateAndCompleted(testTask.getDate().truncatedTo(ChronoUnit.SECONDS), false);
         assertThat(foundTasks).isNotEmpty();
         assertThat(foundTasks.get(0).getTitle()).isEqualTo(testTask.getTitle());
@@ -41,7 +41,7 @@ class TaskRepositoryTest {
     }
 
     @Test
-    public void whenFindByDateBetweenAndCompleted_thenFindTask() {
+    public void whenFindByDateBetweenAndCompleted() {
         LocalDateTime startDate = LocalDateTime.now().minusDays(1);
         LocalDateTime endDate = LocalDateTime.now().plusDays(1);
 
